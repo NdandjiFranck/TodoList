@@ -7,7 +7,7 @@ client = TestClient(app)
 
 #tester la creation d'un compte avec succes puis l'effacer apres le test
 def test_create_account_success(cleanup):
-    response = client.post("/auth/signup", json={"email": "test_adama@example.com", "password": "testpassword"})
+    response = client.post("/auth/signup", json={"email": "test_franck@example.com", "password": "testpassword"})
     assert response.status_code == 201
     assert "message" in response.json()
     assert "id" in response.json()["message"]
@@ -15,7 +15,7 @@ def test_create_account_success(cleanup):
 
 # Tester si un compte existe déja
 def test_create_account_conflict(cleanup):
-    response = client.post("/auth/signup", json={"email": "adama@example.com", "password": "testpassword"})
+    response = client.post("/auth/signup", json={"email": "franck@example.com", "password": "testpassword"})
     assert response.status_code == 409  # Conflict
 
 #tester la connexion avec un user existant

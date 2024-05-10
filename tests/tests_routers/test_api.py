@@ -5,7 +5,7 @@ from main import app
 import httpx
 from fastapi.testclient import TestClient
 from firebase_admin import auth
-from database.firebse import authUser
+from database.firebase import authUser
 
 
 client = TestClient(app)
@@ -13,9 +13,9 @@ client = TestClient(app)
 
 # Test pour faire un get all sur les tâches
 def test_get_all_tasks(cleanup):
-    client.post("/auth/signup", json={"email": "test_adama@example.com", "password": "testpassword"})
+    client.post("/auth/signup", json={"email": "test_franck@example.com", "password": "testpassword"})
     
-    auth_token = authUser.sign_in_with_email_and_password(email="test_adama@example.com", password="testpassword")['idToken']
+    auth_token = authUser.sign_in_with_email_and_password(email="test_franck@example.com", password="testpassword")['idToken']
     auth_headers= {"Authorization": f"Bearer {auth_token}"}
 
     response = client.get("/task/", headers=auth_headers)
@@ -31,10 +31,10 @@ def test_get_all_tasks_unauthorized(cleanup):
 
 #Test pour ajout
 def test_add_new_task(cleanup):
-    client.post("/auth/signup", json={"email": "test_adama@example.com", "password": "testpassword"})
+    client.post("/auth/signup", json={"email": "test_franck@example.com", "password": "testpassword"})
     
     # Création des données de la tâche
-    auth_token = authUser.sign_in_with_email_and_password(email="test_adama@example.com", password="testpassword")['idToken']
+    auth_token = authUser.sign_in_with_email_and_password(email="test_franck@example.com", password="testpassword")['idToken']
     auth_headers = {"Authorization": f"Bearer {auth_token}"}
     
     task_data = {

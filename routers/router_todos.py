@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends
 from typing import Dict, List
 from uuid import UUID, uuid4
-from classes.schema_dto import Task, TaskNoId
-from database.firebse import db
-from routers.routers_auth import get_current_user
+from classes.schemas_dto import Task, TaskNoId
+from database.firebase import db
+from routers.router_auth import get_current_user
 import uuid
 
 router = APIRouter(
