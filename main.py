@@ -14,6 +14,6 @@ app = FastAPI(
     openapi_tags= tags_metadata
 )
 
-app.include_router(routers.router_todoList.router)
-app.include_router(routers.routers_auth.router)
+app.include_router(routers.router_todos.router)
+app.include_router(routers.router_auth.router)
 
